@@ -1,47 +1,76 @@
-# Fake News & Misinformation Classifier Tool
-A modular Python-based application that analyzes news headlines and articles to determine their credibility using source reputation, sentiment analysis, and clickbait detection.
+# Fake News & Misinformation Classifier
 
----
+A Python-based application developed as a **4-member Object-Oriented Programming group project** to analyze news headlines and articles and provide a credibility assessment.
 
-## Project Overview
+The application combines source reputation, sentiment analysis, keyword/clickbait detection, and weighted scoring to classify news content as **Likely Real, Suspicious, or Likely Fake**.
 
-This system is designed to simulate a real-world fake news detection workflow. It demonstrates NLP integration, weighted scoring algorithms, and modular OOP application design.
+## 🚀 Features
 
-The project focuses on:
-- Structured GUI development using Streamlit
-- SQLite database management for source reputation and history
-- Natural Language Processing using TextBlob
-- Object-Oriented Programming (Abstraction, Inheritance, Polymorphism, Encapsulation)
-- Modular file organization across separate packages
+* News headline and article credibility analysis
+* Source reputation scoring
+* Sentiment analysis using TextBlob
+* Clickbait and sensational keyword detection
+* Weighted credibility scoring
+* SQLite database for source information and checking history
+* Streamlit-based user interface
+* Custom exception handling
+* Modular Object-Oriented Programming structure
 
----
+## 🛠️ Tech Stack
 
-## Key Features
+* **Python**
+* **Streamlit**
+* **SQLite**
+* **TextBlob**
+* **Pandas**
+* **Regular Expressions (Regex)**
 
-- Credibility scoring using a weighted formula: `0.40 × source + 0.35 × sentiment + 0.25 × keywords`
-- Source reputation database with 18+ pre-seeded news outlets (Dawn, BBC, Reuters, etc.)
-- Sentiment analysis using TextBlob — detects emotional/biased tone
-- Clickbait detection via regex (ALL CAPS, `!!!`, sensational phrases)
-- Persistent history log of all past checks stored in SQLite
-- Custom exception handling — no raw tracebacks ever shown in GUI
-- Clean color-coded verdict: 🟢 Likely Real · 🟡 Suspicious · 🔴 Likely Fake
+## 🧠 OOP Concepts
 
----
+The project demonstrates several Object-Oriented Programming concepts:
 
-## Tech Stack
+* Abstraction
+* Inheritance
+* Polymorphism
+* Encapsulation
 
-- Python
-- Streamlit (GUI)
-- SQLite (Database)
-- TextBlob (Sentiment Analysis)
-- Pandas (Data Display)
-- Regular Expressions (Clickbait Detection)
+## 👨‍💻 My Contribution
 
----
+As one of the four members of the team, I was responsible for the **database component** of the project.
 
-## Project Structure
+My work included:
 
-```
+* Designing the SQLite database structure
+* Creating the `sources` and `history` tables
+* Adding initial news-source data
+* Implementing database connection and initialization
+* Developing CRUD operations for news sources
+* Implementing functionality to store and retrieve checking history
+* Handling database-related errors through custom exceptions
+
+### Database Structure
+
+The database consists primarily of two tables:
+
+**`sources`**
+
+* Stores news-source names
+* Reputation scores
+* Source categories
+
+**`history`**
+
+* Stores analyzed content
+* Source information
+* Checker type
+* Final credibility score
+* Verdict
+* Individual scoring components
+* Timestamp
+
+## 📁 Project Structure
+
+```text
 fake_news_classifier/
 │
 ├── main.py
@@ -59,7 +88,8 @@ fake_news_classifier/
 │
 ├── database/
 │   ├── db_manager.py
-│   └── schema.sql
+│   ├── schema.sql
+│   └── fake_news.db
 │
 ├── data/
 │   └── keywords.json
@@ -68,53 +98,51 @@ fake_news_classifier/
     └── exceptions.py
 ```
 
-- `main.py` → Streamlit entry point and all 3 GUI screens
-- `models/content_checker.py` → Abstract class + HeadlineChecker + FullTextChecker
-- `models/credibility_score.py` → CredibilityScore base + WeightedScore (formula)
-- `models/article.py` → NewsArticle class with input validation
-- `models/source.py` → Source class with encapsulated reputation score
-- `analysis/sentiment.py` → TextBlob wrapper converting tone to 0–100 score
-- `analysis/scoring.py` → Keyword/clickbait scorer using regex + JSON lists
-- `database/db_manager.py` → Centralized SQLite CRUD operations
-- `database/schema.sql` → Table definitions + 18 seeded news sources
-- `data/keywords.json` → Clickbait phrase and sensational word lists
-- `utils/exceptions.py` → 4 custom exception classes
+## ⚙️ Installation
 
----
+Clone the repository:
 
-## Installation & Usage
-
-1. Clone the repository:
 ```bash
 git clone https://github.com/M3M397/fake-news-classifier.git
 ```
 
-2. Install dependencies:
+Install the required dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Download TextBlob language data *(run once)*:
+Download TextBlob language data:
+
 ```bash
 python -m textblob.download_corpora
 ```
 
-4. Run the application:
+## ▶️ Running the Application
+
+Run the Streamlit application:
+
 ```bash
 streamlit run main.py
 ```
 
-Open your browser at **http://localhost:8501**
+The application will open in your browser at:
 
----
+```text
+http://localhost:8501
+```
 
-## Purpose of This Project
+## 🎯 Project Purpose
 
-This project demonstrates my ability to:
-- Design modular Python applications using OOP principles
-- Integrate relational databases with application logic
-- Apply NLP techniques for real-world text classification
-- Build functional, modern GUI applications
-- Handle errors gracefully using custom exception hierarchies
+This project was developed to gain practical experience with:
 
----
+* Object-Oriented Programming
+* Database integration
+* Natural Language Processing
+* Modular Python application development
+* Team-based software development
+* Building a functional Streamlit application
+
+## 👥 Team Project
+
+This project was developed collaboratively by a **team of four students** as part of our Object-Oriented Programming coursework.
